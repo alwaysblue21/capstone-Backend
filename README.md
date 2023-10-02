@@ -2,7 +2,7 @@
 - **Project Name:** Lego Collection App
 - **Project By:** Je Min Yun
 - [**LINK TO GITHUB**](https://github.com/alwaysblue21/capstone-Backend)
-- [**LINK TO DEPLOYED WEBSITE**](https://capstone-backend-jy.onrender.com/)
+- [**LINK TO DEPLOYED WEBSITE**](https://capstone-backend-jy.onrender.com/legos)
 - **List of Technologies used:** Nestjs Postman MongoDB Render
 ## Description
 Users can add their lego collection to see what they have, and information of the lego model.
