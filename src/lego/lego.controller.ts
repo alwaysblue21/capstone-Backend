@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { LegoService } from './lego.service';
 import { Lego } from './schemas/lego.schema';
 
-@Controller('lego')
+@Controller('legos')
 export class LegoController {
     constructor(private legoService: LegoService) {}
 

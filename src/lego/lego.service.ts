@@ -14,4 +14,9 @@ export class LegoService {
         const legos = await this.legoModel.find();
         return legos;
     }
+
+    async create(lego: Lego): Promise<Lego> {
+        const res = await this.legoModel.create(lego);
+        return res;
+    }
 }
