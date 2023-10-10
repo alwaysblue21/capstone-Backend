@@ -21,6 +21,7 @@ export class LegoService {
     }
 
     async findById(id: string): Promise<Lego> {
+        
         const lego = await this.legoModel.findById(id);
 
         if(!lego) {
