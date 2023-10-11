@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
 import { LegoService } from './lego.service';
 import { Lego } from './schemas/lego.schema';
 import { CreateLegoDto } from './dto/create-lego.dto';
@@ -19,7 +19,10 @@ export class LegoController {
     async createLego(
         @Body()
         lego: CreateLegoDto,
+        @Req() req
     ): Promise<Lego> {
+        console.log(req.user);
+
         return this.legoService.create(lego);
     }
 

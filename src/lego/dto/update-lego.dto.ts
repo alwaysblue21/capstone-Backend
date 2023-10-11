@@ -1,4 +1,5 @@
-import { IsOptional, IsString } from "class-validator";
+import { IsEmpty, IsOptional, IsString } from "class-validator";
+import { User } from "src/auth/schemas/user.schema";
 
 
 export class UpdateLegoDto {
@@ -26,4 +27,7 @@ export class UpdateLegoDto {
     @IsOptional()
     @IsString()
     readonly price: string;
+
+    @IsEmpty({ message: "You Can Not Pass User Id" })
+    readonly user: User;
 }
