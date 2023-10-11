@@ -21,9 +21,8 @@ export class LegoController {
         lego: CreateLegoDto,
         @Req() req
     ): Promise<Lego> {
-        console.log(req.user);
 
-        return this.legoService.create(lego);
+        return this.legoService.create(lego, req.user);
     }
 
     @Get(":id")

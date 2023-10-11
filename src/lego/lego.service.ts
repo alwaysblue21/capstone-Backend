@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Lego } from './schemas/lego.schema';
 import * as mongoose from 'mongoose';
+import { User } from 'src/auth/schemas/user.schema';
 
 @Injectable()
 export class LegoService {
@@ -15,7 +16,10 @@ export class LegoService {
         return legos;
     }
 
-    async create(lego: Lego): Promise<Lego> {
+    async create(lego: Lego, user: User): Promise<Lego> {
+
+        const data = Object.assign(lego, { user: user._id })
+
         const res = await this.legoModel.create(lego);
         return res;
     }
