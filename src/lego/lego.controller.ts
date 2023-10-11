@@ -1,8 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { LegoService } from './lego.service';
 import { Lego } from './schemas/lego.schema';
 import { CreateLegoDto } from './dto/create-lego.dto';
 import { UpdateLegoDto } from './dto/update-lego.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('legos')
 export class LegoController {
@@ -14,6 +15,7 @@ export class LegoController {
     }
 
     @Post()
+    @UseGuards(AuthGuard())
     async createLego(
         @Body()
         lego: CreateLegoDto,
