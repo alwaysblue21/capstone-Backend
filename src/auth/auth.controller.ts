@@ -21,6 +21,6 @@ export class AuthController {
             secure:process.env.NODE_ENV !== 'development',
             sameSite: 'strict',
         })
+        return
     }
-
 }
