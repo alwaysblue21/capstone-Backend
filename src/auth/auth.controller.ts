@@ -18,7 +18,7 @@ export class AuthController {
         const jwt = this.authService.login(loginDto)
         res.cookie('access_token', jwt, {
             httpOnly: true,
-            secure:process.env.NODE_ENV !== 'development',
+            secure: process.env.NODE_ENV !== 'development',
             sameSite: 'strict',
         })
         return
