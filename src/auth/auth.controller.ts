@@ -19,7 +19,7 @@ export class AuthController {
         res.cookie('access_token', jwt, {
             httpOnly: true,
             secure: process.env.NODE_ENV !== 'development',
-            sameSite: 'strict',
+            sameSite: "none"
         })
         return
     }
