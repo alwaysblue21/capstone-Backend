@@ -24,17 +24,17 @@ export class AuthService {
         const token = this.jwtSercive.sign({ id: user._id })
         return { token }
     }
-    async login(loginDto: LoginDto) {
+    async login(loginDto: LoginDto): Promise<{ token: string }> {
         const { email, password } = loginDto;
         const user = await this.userModel.findOne({ email })
         if(!user) {
             throw new UnauthorizedException("Invalid email or password")
         }
         const isPasswordMatched = await bcrypt.compare(password, user.password)
-        if(!isPasswordMatched) {
+        if(!user) {
             throw new UnauthorizedException("Invalid email or password")
         }
         const token = this.jwtSercive.sign({ id: user._id })
-        return token
+        return { token };
     }
 }
