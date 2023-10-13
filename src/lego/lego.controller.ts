@@ -27,6 +27,7 @@ export class LegoController {
     }
 
     @Get(":id")
+    @UseGuards(AuthGuard())
     async getLego(
         @Param("id")
         id: string
@@ -35,6 +36,7 @@ export class LegoController {
     }
 
     @Put(":id")
+    @UseGuards(AuthGuard())
     async updateLego(
         @Param("id")
         id: string,
@@ -45,6 +47,7 @@ export class LegoController {
     }
 
     @Delete(":id")
+    @UseGuards(AuthGuard())
     async deleteLego(
         @Param("id")
         id: string
