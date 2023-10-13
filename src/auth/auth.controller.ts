@@ -1,8 +1,7 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignUpDto } from './dto/signup.dto';
 import { LoginDto } from './dto/login.dto';
-import { Response } from 'express';
 
 @Controller('auth')
 export class AuthController {
@@ -14,13 +13,7 @@ export class AuthController {
     }
 
     @Post("/login")
-    login(@Res() res: Response, @Body() loginDto: LoginDto) {
-        const jwt = this.authService.login(loginDto)
-        res.cookie('access_token', jwt, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV !== 'development',
-            sameSite: "none"
-        })
-        return
+    login(@Body() loginDto: LoginDto): Promise<{ token: string}> {
+        return this.authService.login(loginDto)
     }
 }
