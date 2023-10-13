@@ -10,6 +10,7 @@ export class LegoController {
     constructor(private legoService: LegoService) {}
 
     @Get()
+    @UseGuards(AuthGuard())
     async getAllLegos(): Promise<Lego[]> {
         return this.legoService.findAll();
     }
