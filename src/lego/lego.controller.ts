@@ -22,7 +22,7 @@ export class LegoController {
     @UseGuards(AuthGuard())
     async index(@Req() req, @Res() res) {
     try {
-      const legos = await this.legoService.findUserLegos(req.payload.username);
+      const legos = await this.legoService.findUserLegos(req.payload.name);
       res.render('', { legos });
     } catch (err) {
       res.status(400).json({ err });
