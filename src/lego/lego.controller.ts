@@ -4,7 +4,7 @@ import { Lego } from './schemas/lego.schema';
 import { CreateLegoDto } from './dto/create-lego.dto';
 import { UpdateLegoDto } from './dto/update-lego.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { Request } from 'express';
+import { Request } from '@nestjs/common';
 
 @Controller('legos')
 export class LegoController {
@@ -12,7 +12,9 @@ export class LegoController {
 
     @Get()
     @UseGuards(AuthGuard())
-    async getAllLegos(): Promise<Lego[]> {
+    async getAllLegos(@Request() req): Promise<Lego[]> {
+        console.log(req.user)
+        // return this.legoService.findByUser(req.user._id);
         return this.legoService.findAll();
     }
 
