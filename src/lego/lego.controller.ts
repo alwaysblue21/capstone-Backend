@@ -14,8 +14,8 @@ export class LegoController {
     @UseGuards(AuthGuard())
     async getAllLegos(@Request() req): Promise<Lego[]> {
         console.log(req.user)
-        // return this.legoService.findByUser(req.user._id);
-        return this.legoService.findAll();
+        return this.legoService.findByUser(req.user._id);
+        // return this.legoService.findAll();
     }
 
     // find by user
