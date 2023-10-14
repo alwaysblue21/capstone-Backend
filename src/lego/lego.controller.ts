@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
 import { LegoService } from './lego.service';
 import { Lego } from './schemas/lego.schema';
 import { CreateLegoDto } from './dto/create-lego.dto';
@@ -10,25 +10,18 @@ import { Request } from 'express';
 export class LegoController {
     constructor(private legoService: LegoService) {}
 
-    // @Get()
-    // @UseGuards(AuthGuard())
-    // async getAllLegos(): Promise<Lego[]> {
-    //     return this.legoService.findAll();
-    // }
-
-
-    // user legoes
     @Get()
     @UseGuards(AuthGuard())
-    async index(@Req() req, @Res() res) {
-    try {
-      const legos = await this.legoService.findUserLegos(req.payload.name);
-      res.render('', { legos });
-    } catch (err) {
-      res.status(400).json({ err });
+    async getAllLegos(): Promise<Lego[]> {
+        return this.legoService.findAll();
     }
-  }
 
+    // find by user
+    // @Get('/user/:userId')
+    // @UseGuards(AuthGuard())
+    // async findLegosByUser(@Param('userId') userId: string): Promise<Lego[]> {
+    //     return this.legoService.findByUser(userId);
+    // }
 
 
     @Post()
