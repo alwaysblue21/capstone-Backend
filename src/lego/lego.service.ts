@@ -16,13 +16,13 @@ export class LegoService {
         return legos;
     }
 
-    // //find by user
-    // async findByUser(userId: string): Promise<Lego[]> {
-    //     const legos = await this.legoModel.find({
-    //         user: userId,
-    //     });
-    //     return legos;
-    // }
+    //find by user
+    async findByUser(userId: string): Promise<Lego[]> {
+        const legos = await this.legoModel.find({
+            user: userId,
+        });
+        return legos;
+    }
 
     async create(lego: Lego, user: User): Promise<Lego> {
 
