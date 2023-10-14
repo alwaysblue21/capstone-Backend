@@ -16,15 +16,11 @@ export class LegoService {
         return legos;
     }
 
-    // find by user
-    // async findByUser(userId: string): Promise<Lego[]> {
-    //     const legos = await this.legoModel.find({
-    //         where: {
-    //             user: userId,
-    //         },
-    //     });
-    //     return legos;
-    // }
+    //user legos
+    async findUserLegos(name: string): Promise<Lego[]> {
+        const legos = await this.legoModel.find({ name });
+        return legos;
+      }
 
     async create(lego: Lego, user: User): Promise<Lego> {
 
