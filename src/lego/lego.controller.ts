@@ -19,7 +19,8 @@ export class LegoController {
 
     // user legoes
     @Get()
-  async index(@Req() req, @Res() res) {
+    @UseGuards(AuthGuard())
+    async index(@Req() req, @Res() res) {
     try {
       const legos = await this.legoService.findUserLegos(req.payload.username);
       res.render('', { legos });
