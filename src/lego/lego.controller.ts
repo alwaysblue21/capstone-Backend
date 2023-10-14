@@ -9,11 +9,19 @@ import { AuthGuard } from '@nestjs/passport';
 export class LegoController {
     constructor(private legoService: LegoService) {}
 
-    @Get()
+    // @Get()
+    // @UseGuards(AuthGuard())
+    // async getAllLegos(): Promise<Lego[]> {
+    //     return this.legoService.findAll();
+    // }
+
+    // find by user
+    @Get('/user/:userId')
     @UseGuards(AuthGuard())
-    async getAllLegos(): Promise<Lego[]> {
-        return this.legoService.findAll();
+    async findLegosByUser(@Param('userId') userId: string): Promise<Lego[]> {
+        return this.legoService.findByUser(userId);
     }
+
 
     @Post()
     @UseGuards(AuthGuard())
