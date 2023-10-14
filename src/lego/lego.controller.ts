@@ -4,6 +4,7 @@ import { Lego } from './schemas/lego.schema';
 import { CreateLegoDto } from './dto/create-lego.dto';
 import { UpdateLegoDto } from './dto/update-lego.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { Request } from 'express';
 
 @Controller('legos')
 export class LegoController {
